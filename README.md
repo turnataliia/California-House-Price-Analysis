@@ -14,7 +14,6 @@ The Tableau visualizations provide a visual representation of the insights deriv
 - Income to house value distribution.
 - Housing density across the state.
 - Analysis of regional variations in housing prices across California.
-![Tableau Dashboard](California Housing Prices Analysis.png)
 
 ## Contributors
 - Turchanova Nataliia
