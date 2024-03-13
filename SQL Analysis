@@ -1,0 +1,42 @@
+-- Retrieving a sample of the data
+SELECT *
+FROM housing
+LIMIT 10;
+
+-- Counting missing values in each column
+SELECT 
+    SUM(CASE WHEN longitude IS NULL THEN 1 ELSE 0 END) AS missing_longitude,
+    SUM(CASE WHEN latitude IS NULL THEN 1 ELSE 0 END) AS missing_latitude,
+    SUM(CASE WHEN housing_median_age IS NULL THEN 1 ELSE 0 END) AS missing_housing_median_age,
+    SUM(CASE WHEN total_rooms IS NULL THEN 1 ELSE 0 END) AS missing_total_rooms,
+    SUM(CASE WHEN total_bedrooms IS NULL THEN 1 ELSE 0 END) AS missing_total_bedrooms,
+    SUM(CASE WHEN population IS NULL THEN 1 ELSE 0 END) AS missing_population,
+    SUM(CASE WHEN households IS NULL THEN 1 ELSE 0 END) AS missing_households,
+    SUM(CASE WHEN median_income  IS NULL THEN 1 ELSE 0 END) AS missing_median_income,
+    SUM(CASE WHEN median_house_value  IS NULL THEN 1 ELSE 0 END) AS missing_median_house_value,
+    SUM(CASE WHEN ocean_proximity  IS NULL THEN 1 ELSE 0 END) AS missing_ocean_proximity
+FROM housing;
+
+-- Calculating summary statistics for numerical columns
+SELECT 
+    MIN(median_house_value) AS min_house_value,
+    MAX(median_house_value) AS max_house_value,
+    AVG(median_house_value) AS avg_house_value,
+    COUNT(*) AS total_records
+FROM housing;
+
+-- Calculating correlation matrix for numerical columns
+SELECT 
+    CORR(total_rooms, median_house_value) AS rooms_house_value_corr,
+    CORR(total_bedrooms, median_house_value) AS bedrooms_house_value_corr,
+    CORR(population, median_house_value)AS population_house_value_corr,
+    CORR(households, median_house_value)AS households_house_value_corr,
+    CORR(total_bedrooms, total_rooms)AS bedrooms_rooms_corr,
+    CORR(median_income , median_house_value)AS income_house_value_corr,
+    CORR(housing_median_age, median_house_value)AS age_house_value_corr,
+    CORR(ocean_proximity, median_house_value)AS ocean_house_value_corr
+FROM housing;
+
+
+
+
